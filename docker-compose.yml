@@ -1,0 +1,15 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./
+    ports:
+      - 8000:8000
+    # attach gpu to the container
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
